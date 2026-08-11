@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas Acadêmicas</title>
+</head>
+<body>
+    <header>
+        <h1>Gerenciador de Tarefas Acadêmicas</h1>
+    </header>
+
+    <main>
+        <section aria-labelledby="filtros-titulo">
+            <h2 id="filtros-titulo">Busca e Filtros</h2>
+            
+            <form>
+                <div>
+                    <label for="busca-tarefa">Buscar por título:</label>
+                    <input type="text" id="busca-tarefa" name="busca-tarefa">
+                </div>
+
+                <fieldset>
+                    <legend>Filtrar por status:</legend>
+                    <div>
+                        <input type="radio" id="status-todos" name="status" value="todos" checked>
+                        <label for="status-todos">Todos</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="status-fazer" name="status" value="fazer">
+                        <label for="status-fazer">A fazer</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="status-andamento" name="status" value="andamento">
+                        <label for="status-andamento">Em andamento</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="status-revisao" name="status" value="revisao">
+                        <label for="status-revisao">Em revisão</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="status-concluida" name="status" value="concluida">
+                        <label for="status-concluida">Concluída</label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Filtrar por prioridade:</legend>
+                    <div>
+                        <input type="radio" id="prioridade-todas" name="prioridade" value="todas" checked>
+                        <label for="prioridade-todas">Todas</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="prioridade-baixa" name="prioridade" value="baixa">
+                        <label for="prioridade-baixa">Baixa</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="prioridade-media" name="prioridade" value="media">
+                        <label for="prioridade-media">Média</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="prioridade-alta" name="prioridade" value="alta">
+                        <label for="prioridade-alta">Alta</label>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <section aria-labelledby="status-fazer-titulo">
+            <h2 id="status-fazer-titulo">A fazer</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Implementar autenticação</h3>
+                        <p><strong>Projeto:</strong> Sistema Web</p>
+                        <p><strong>Responsável:</strong> Maria Silva</p>
+                        <p><strong>Prazo:</strong> 15/08/2026</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Revisar documentação de API</h3>
+                        <p><strong>Projeto:</strong> Backend RESTful</p>
+                        <p><strong>Responsável:</strong> João Santos</p>
+                        <p><strong>Prazo:</strong> 18/08/2026</p>
+                        <p><strong>Prioridade:</strong> Média</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Configurar banco de dados</h3>
+                        <p><strong>Projeto:</strong> Sistema Web</p>
+                        <p><strong>Responsável:</strong> Ana Costa</p>
+                        <p><strong>Prazo:</strong> 20/08/2026</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="status-andamento-titulo">
+            <h2 id="status-andamento-titulo">Em andamento</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Desenvolver componentes React</h3>
+                        <p><strong>Projeto:</strong> Frontend Moderno</p>
+                        <p><strong>Responsável:</strong> Pedro Oliveira</p>
+                        <p><strong>Prazo:</strong> 16/08/2026</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Testes unitários da lógica</h3>
+                        <p><strong>Projeto:</strong> Backend RESTful</p>
+                        <p><strong>Responsável:</strong> Lucas Ferreira</p>
+                        <p><strong>Prazo:</strong> 17/08/2026</p>
+                        <p><strong>Prioridade:</strong> Média</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="status-revisao-titulo">
+            <h2 id="status-revisao-titulo">Em revisão</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Migração de dados históricos</h3>
+                        <p><strong>Projeto:</strong> Sistema Web</p>
+                        <p><strong>Responsável:</strong> Carla Mendes</p>
+                        <p><strong>Prazo:</strong> 14/08/2026</p>
+                        <p><strong>Prioridade:</strong> Média</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Otimizar queries SQL</h3>
+                        <p><strong>Projeto:</strong> Backend RESTful</p>
+                        <p><strong>Responsável:</strong> Roberto Dias</p>
+                        <p><strong>Prazo:</strong> 19/08/2026</p>
+                        <p><strong>Prioridade:</strong> Baixa</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="status-concluida-titulo">
+            <h2 id="status-concluida-titulo">Concluída</h2>
+            <ul>
+                <li>
+                    <article>
+                        <h3>Escrever especificação do projeto</h3>
+                        <p><strong>Projeto:</strong> Frontend Moderno</p>
+                        <p><strong>Responsável:</strong> Beatriz Alves</p>
+                        <p><strong>Prazo:</strong> 10/08/2026</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                    </article>
+                </li>
+                <li>
+                    <article>
+                        <h3>Configurar ambiente de desenvolvimento</h3>
+                        <p><strong>Projeto:</strong> Sistema Web</p>
+                        <p><strong>Responsável:</strong> Felipe Rocha</p>
+                        <p><strong>Prazo:</strong> 08/08/2026</p>
+                        <p><strong>Prioridade:</strong> Alta</p>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Rayane Araújo — Desenvolvimento Frontend 2026.2</p>
+    </footer>
+</body>
+</html>
