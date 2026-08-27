@@ -226,6 +226,7 @@ article {
     box-shadow: 0 0.25rem 0.55rem rgba(47, 42, 36, 0.16);
     transform: rotate(-0.25deg);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 0.3rem 0.7rem rgba(47, 42, 36, 0.18);
 }
 
 li:nth-child(even) article {
