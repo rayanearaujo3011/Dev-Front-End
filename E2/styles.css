@@ -298,6 +298,15 @@ footer p {
 
 /* A partir daqui, duas colunas cabem sem apertar demais os cartões. */
 @media (min-width: 44rem) {
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    form > div {
+        grid-column: 1 / -1;
+    }
+
     main {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
