@@ -10,7 +10,7 @@
     --concluida: #cce4bf;
 
     --destaque: #f7c95c;
-    --foco: #1f5aa6;
+    --perigo: #f4b4ad;
 
     --espaco-p: 0.5rem;
     --espaco-m: 1rem;
@@ -20,9 +20,7 @@
     --sombra: 0 0.35rem 0.9rem rgba(47, 42, 36, 0.16);
 }
 
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
 }
 
@@ -31,7 +29,9 @@ body {
     color: var(--texto);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
+
     background-color: var(--papel);
+
     background-image:
         linear-gradient(
             to right,
@@ -63,21 +63,23 @@ header {
 h1 {
     position: relative;
     width: fit-content;
-    max-width: 100%;
     margin: 0;
-    font-size: clamp(1.7rem, 4vw, 2.8rem);
-    line-height: 1.15;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
 }
 
 h1::after {
     content: "";
     position: absolute;
     z-index: -1;
+
     left: -0.15rem;
     right: -0.15rem;
     bottom: 0.05rem;
+
     height: 0.55rem;
+
     background: var(--destaque);
+
     transform: rotate(-1deg);
 }
 
@@ -88,123 +90,171 @@ h2 {
 
 main {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--espaco-g);
-    min-width: 0;
 }
 
-main > section {
-    min-width: 0;
-}
-
-/* Busca e filtros */
-main > section:first-of-type {
+.painel-controle {
     position: relative;
+
     padding: var(--espaco-g);
+
     border: 0.1rem solid var(--borda);
     border-radius: var(--raio);
+
     background: rgba(255, 253, 247, 0.96);
+
     box-shadow: var(--sombra);
 }
 
-main > section:first-of-type::before {
+.painel-controle::before {
     content: "";
+
     position: absolute;
+
     top: -0.5rem;
     left: 50%;
+
     width: 4.5rem;
     height: 1rem;
+
     background: rgba(233, 217, 167, 0.85);
+
     transform: translateX(-50%) rotate(-2deg);
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+#form-tarefa {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--espaco-m);
+
+    margin-bottom: 1.8rem;
 }
 
-form > div {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espaco-p);
-}
-
-label,
-legend {
-    font-weight: 700;
-}
-
-input[type="text"] {
-    width: 100%;
-    min-width: 0;
-    min-height: 2.7rem;
-    padding: 0.65rem 0.75rem;
-    border: 0.1rem solid var(--borda);
-    border-radius: var(--raio);
-    background: #ffffff;
-    color: var(--texto);
+input,
+select,
+button {
     font: inherit;
 }
 
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    min-height: 2.7rem;
+
+    padding: 0.65rem 0.75rem;
+
+    border: 0.1rem solid var(--borda);
+    border-radius: var(--raio);
+
+    background: #ffffff;
+    color: var(--texto);
+}
+
+input:focus,
+select:focus {
+    outline: 0.15rem solid #1f5aa6;
+    outline-offset: 0.1rem;
+}
+
+button {
+    min-height: 2.7rem;
+
+    padding: 0.65rem 1rem;
+
+    border: 0.1rem solid var(--borda);
+    border-radius: var(--raio);
+
+    background: var(--destaque);
+    color: var(--texto);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-0.1rem);
+}
+
+#busca-tarefa {
+    margin-bottom: var(--espaco-m);
+}
+
 fieldset {
-    min-width: 0;
-    margin: 0;
+    margin: var(--espaco-m) 0 0;
     padding: var(--espaco-m);
+
     border: 0.1rem dashed var(--borda);
     border-radius: var(--raio);
 }
 
-fieldset > div {
-    display: flex;
-    align-items: center;
-    gap: var(--espaco-p);
+legend {
+    padding: 0 0.3rem;
+    font-weight: bold;
 }
 
-fieldset > div + div {
-    margin-top: 0.35rem;
+fieldset label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 0.35rem;
+
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+
+    cursor: pointer;
 }
 
 input[type="radio"] {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 
-/* Colunas do quadro */
-main > section:not(:first-of-type) {
+.coluna {
     display: flex;
     flex-direction: column;
-    gap: var(--espaco-m);
+
     min-width: 0;
+    min-height: 20rem;
+
     padding: var(--espaco-m);
+
     border: 0.1rem solid var(--borda);
     border-radius: var(--raio);
+
     box-shadow: var(--sombra);
 }
 
-main > section[aria-labelledby="status-fazer-titulo"] {
+.coluna[data-status="fazer"] {
     background: var(--fazer);
 }
 
-main > section[aria-labelledby="status-andamento-titulo"] {
+.coluna[data-status="andamento"] {
     background: var(--andamento);
 }
 
-main > section[aria-labelledby="status-revisao-titulo"] {
+.coluna[data-status="revisao"] {
     background: var(--revisao);
 }
 
-main > section[aria-labelledby="status-concluida-titulo"] {
+.coluna[data-status="concluida"] {
     background: var(--concluida);
 }
 
 ul {
     display: flex;
     flex-direction: column;
+
     gap: var(--espaco-m);
-    min-width: 0;
+
     margin: 0;
     padding: 0;
+
     list-style: none;
 }
 
@@ -214,81 +264,93 @@ li {
 
 article {
     position: relative;
+
     display: flex;
     flex-direction: column;
+
     gap: var(--espaco-p);
-    min-width: 0;
-    min-height: 10.5rem;
+
+    min-height: 11rem;
+
     padding: 1.1rem var(--espaco-m) var(--espaco-m);
+
     border: 0.1rem solid rgba(47, 42, 36, 0.28);
     border-radius: var(--raio);
+
     background: var(--papel);
+
     box-shadow: 0 0.25rem 0.55rem rgba(47, 42, 36, 0.16);
-    transform: rotate(-0.25deg);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    transform: rotate(-0.2deg);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 li:nth-child(even) article {
-    transform: rotate(0.25deg);
+    transform: rotate(0.2deg);
 }
 
 article::before {
     content: "";
+
     position: absolute;
+
     top: -0.45rem;
     left: 50%;
+
     width: 3rem;
     height: 0.8rem;
+
     background: rgba(232, 215, 165, 0.82);
+
     transform: translateX(-50%) rotate(-1deg);
 }
 
 article:hover {
     transform: translateY(-0.12rem) rotate(0);
+
     box-shadow: 0 0.4rem 0.8rem rgba(47, 42, 36, 0.2);
 }
 
 article h3 {
-    min-width: 0;
     margin: 0 0 var(--espaco-p);
+
     overflow: hidden;
+
     white-space: nowrap;
+
     text-overflow: ellipsis;
 }
 
 article p {
     margin: 0;
+
     color: var(--texto-suave);
+
     font-size: 0.95rem;
 }
 
-/* Empurra o prazo para a base do cartão */
-article p:nth-of-type(3) {
+.prioridade {
     margin-top: auto;
+
     padding-top: var(--espaco-p);
+
     border-top: 0.08rem dashed var(--borda);
-    color: var(--texto);
 }
 
-/* Deixa a prioridade mais visível */
-article p:nth-of-type(4) {
-    width: fit-content;
-    max-width: 100%;
-    padding: 0.15rem 0.45rem;
-    border: 0.08rem solid var(--borda);
-    border-radius: var(--raio);
-    color: var(--texto);
-    font-weight: 700;
-}
+.excluir-tarefa {
+    margin-top: var(--espaco-p);
 
-:focus-visible {
-    outline: 0.2rem solid var(--foco);
-    outline-offset: 0.15rem;
+    background: var(--perigo);
 }
 
 footer {
     padding: 2rem 0;
+
     color: var(--texto-suave);
+
     text-align: center;
 }
 
@@ -296,41 +358,46 @@ footer p {
     margin: 0;
 }
 
-/* A partir daqui, duas colunas cabem sem apertar demais os cartões. */
 @media (min-width: 44rem) {
-    form {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
 
-    form > div {
-        grid-column: 1 / -1;
+    #form-tarefa {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
     main {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
     }
 
-    main > section:first-of-type {
+    .painel-controle {
         grid-column: 1 / -1;
     }
+
 }
 
-/* A partir daqui, as quatro colunas cabem lado a lado sem rolagem horizontal. */
 @media (min-width: 76rem) {
-    main {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    #form-tarefa {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
     }
 
-    main > section:first-of-type {
+    main {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+    .painel-controle {
         grid-column: 1 / -1;
     }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        transition: none !important;
+
+    * {
+        transition: none;
     }
+
 }
