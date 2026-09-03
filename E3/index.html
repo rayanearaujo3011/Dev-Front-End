@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gerenciador de Tarefas Acadêmicas</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Gerenciador de Tarefas Acadêmicas</h1>
+    </header>
+
+
+    <main>
+
+        <section class="painel-controle">
+
+            <h2>Adicionar atividade</h2>
+
+            <form id="form-tarefa">
+
+                <input
+                    type="text"
+                    id="titulo-tarefa"
+                    placeholder="Título"
+                >
+
+                <input
+                    type="text"
+                    id="projeto-tarefa"
+                    placeholder="Projeto"
+                >
+
+                <input
+                    type="text"
+                    id="responsavel-tarefa"
+                    placeholder="Responsável"
+                >
+
+                <input
+                    type="date"
+                    id="prazo-tarefa"
+                >
+
+                <select id="status-tarefa">
+                    <option value="fazer">A fazer</option>
+                    <option value="andamento">Em andamento</option>
+                    <option value="revisao">Em revisão</option>
+                    <option value="concluida">Concluída</option>
+                </select>
+
+                <select id="prioridade-tarefa">
+                    <option value="Baixa">Baixa</option>
+                    <option value="Média">Média</option>
+                    <option value="Alta">Alta</option>
+                </select>
+
+                <button type="submit">
+                    Adicionar
+                </button>
+
+            </form>
+
+
+            <h2>Busca e filtros</h2>
+
+            <input
+                type="text"
+                id="busca-tarefa"
+                placeholder="Buscar por título"
+            >
+
+
+            <fieldset>
+
+                <legend>Status</legend>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="status"
+                        value="todos"
+                        checked
+                    >
+                    Todos
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="status"
+                        value="fazer"
+                    >
+                    A fazer
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="status"
+                        value="andamento"
+                    >
+                    Em andamento
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="status"
+                        value="revisao"
+                    >
+                    Em revisão
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="status"
+                        value="concluida"
+                    >
+                    Concluída
+                </label>
+
+            </fieldset>
+
+
+            <fieldset>
+
+                <legend>Prioridade</legend>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="prioridade"
+                        value="todas"
+                        checked
+                    >
+                    Todas
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="prioridade"
+                        value="baixa"
+                    >
+                    Baixa
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="prioridade"
+                        value="media"
+                    >
+                    Média
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="prioridade"
+                        value="alta"
+                    >
+                    Alta
+                </label>
+
+            </fieldset>
+
+        </section>
+
+
+        <section class="coluna" data-status="fazer">
+
+            <h2>A fazer</h2>
+
+            <ul></ul>
+
+        </section>
+
+
+        <section class="coluna" data-status="andamento">
+
+            <h2>Em andamento</h2>
+
+            <ul></ul>
+
+        </section>
+
+
+        <section class="coluna" data-status="revisao">
+
+            <h2>Em revisão</h2>
+
+            <ul></ul>
+
+        </section>
+
+
+        <section class="coluna" data-status="concluida">
+
+            <h2>Concluída</h2>
+
+            <ul></ul>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            Rayane Araújo — Desenvolvimento Frontend 2026.2
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
