@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Crônicas de Leitura</title>
+
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
+</head>
+
+<body>
+
+    <!-- FAÍSCAS DECORATIVAS -->
+
+    <div class="faiscas" aria-hidden="true">
+        <span>✦</span>
+        <span>•</span>
+        <span>✧</span>
+        <span>•</span>
+        <span>✦</span>
+        <span>•</span>
+    </div>
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="cabecalho">
+
+        <div
+            class="armas"
+            aria-hidden="true"
+        >
+            ⚔
+        </div>
+
+        <div
+            class="coroa"
+            aria-hidden="true"
+        >
+            ♛
+        </div>
+
+        <p class="nome-reino">
+            ✦ ARQUIVOS DA COROA ✦
+        </p>
+
+        <h1>
+            Crônicas
+
+            <span>
+                de Leitura
+            </span>
+        </h1>
+
+
+        <div class="ornamento-principal">
+
+            <span></span>
+
+            <b>◆</b>
+
+            <strong>♛</strong>
+
+            <b>◆</b>
+
+            <span></span>
+
+        </div>
+
+
+        <p class="subtitulo">
+            Histórias dignas de coroas, batalhas,
+            magia e um pouco de fogo.
+        </p>
+
+
+        <div
+            class="chamas"
+            aria-hidden="true"
+        >
+            <span>♠</span>
+            <span>♠</span>
+            <span>♠</span>
+            <span>♠</span>
+            <span>♠</span>
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- PAINEL DE FILTROS -->
+
+        <section class="painel">
+
+            <div
+                class="canto superior-esquerdo"
+                aria-hidden="true"
+            >
+                ◆
+            </div>
+
+            <div
+                class="canto superior-direito"
+                aria-hidden="true"
+            >
+                ◆
+            </div>
+
+            <div
+                class="canto inferior-esquerdo"
+                aria-hidden="true"
+            >
+                ◆
+            </div>
+
+            <div
+                class="canto inferior-direito"
+                aria-hidden="true"
+            >
+                ◆
+            </div>
+
+
+            <div class="selo-painel">
+                ♛
+            </div>
+
+
+            <div class="titulo-painel">
+
+                <div class="espada-linha">
+                    ━━━ ⚔ ━━━
+                </div>
+
+                <p>
+                    REGISTROS DA COROA
+                </p>
+
+                <h2>
+                    Biblioteca da Rainha
+                </h2>
+
+                <div class="espada-linha">
+                    ━━━ ◆ ━━━
+                </div>
+
+            </div>
+
+
+            <!-- BUSCA -->
+
+            <div class="campo campo-busca">
+
+                <label for="busca">
+                    ✦ Vasculhar os arquivos
+                </label>
+
+
+                <div class="input-moldura">
+
+                    <input
+                        type="search"
+                        id="busca"
+                        placeholder="Qual história ousa procurar?"
+                    >
+
+                    <span aria-hidden="true">
+                        ◆
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="grupo-filtros">
+
+                <div class="campo">
+
+                    <label for="status">
+                        ⚔ Jornada
+                    </label>
+
+                    <select id="status">
+
+                        <option value="todos">
+                            Todas as jornadas
+                        </option>
+
+                        <option value="quero-ler">
+                            Convocado para leitura
+                        </option>
+
+                        <option value="lendo">
+                            Em batalha
+                        </option>
+
+                        <option value="lido">
+                            Missão cumprida
+                        </option>
+
+                        <option value="abandonado">
+                            Banido do reino
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="genero">
+                        ♛ Reino literário
+                    </label>
+
+                    <select id="genero">
+
+                        <option value="todos">
+                            Todos os reinos
+                        </option>
+
+                        <option value="fantasia">
+                            Fantasia
+                        </option>
+
+                        <option value="romance">
+                            Romance
+                        </option>
+
+                        <option value="suspense">
+                            Suspense
+                        </option>
+
+                        <option value="ficcao">
+                            Ficção
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="ordenacao">
+                        ◆ Decreto de organização
+                    </label>
+
+                    <select id="ordenacao">
+
+                        <option value="padrao">
+                            Ordem dos arquivos
+                        </option>
+
+                        <option value="melhor-nota">
+                            Favoritos da Coroa
+                        </option>
+
+                        <option value="menor-nota">
+                            Menores avaliações
+                        </option>
+
+                        <option value="titulo">
+                            Ordem alfabética
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="limpar"
+            >
+                <span>✦</span>
+
+                QUEBRAR ENCANTAMENTOS
+
+                <span>✦</span>
+            </button>
+
+        </section>
+
+
+        <!-- DIVISÓRIA -->
+
+        <div
+            class="divisoria-fogo"
+            aria-hidden="true"
+        >
+
+            <span></span>
+
+            <b>♛</b>
+
+            <span></span>
+
+        </div>
+
+
+        <!-- MENSAGEM -->
+
+        <div
+            id="mensagem"
+            role="status"
+            aria-live="polite"
+        >
+            As portas do reino estão se abrindo...
+        </div>
+
+
+        <!-- BIBLIOTECA -->
+
+        <section class="area-biblioteca">
+
+            <div class="titulo-estante">
+
+                <p>
+                    ✦ ACERVO REAL ✦
+                </p>
+
+                <h2>
+                    Tomos do Reino
+                </h2>
+
+                <div class="mini-ornamento">
+                    ⚔ ◆ ♛ ◆ ⚔
+                </div>
+
+            </div>
+
+
+            <section
+                id="biblioteca"
+                class="biblioteca"
+                aria-label="Livros da biblioteca"
+            >
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <div class="footer-coroa">
+            ♛
+        </div>
+
+        <div class="footer-linha">
+            ━━━ ⚔ ◆ ⚔ ━━━
+        </div>
+
+        <strong>
+            CRÔNICAS DE LEITURA
+        </strong>
+
+        <p>
+            Biblioteca pessoal de Rayane Araújo
+        </p>
+
+        <small>
+            Que as histórias sobrevivam ao fogo.
+        </small>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="./js/main.js"
+    ></script>
+
+</body>
+
+</html>
