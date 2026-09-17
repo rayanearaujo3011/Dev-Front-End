@@ -13,13 +13,13 @@
 
     <link
         rel="stylesheet"
-        href="./style.css"
+        href="./styles.css"
     >
 </head>
 
 <body>
 
-    <!-- FAÍSCAS DECORATIVAS -->
+    <!-- FAÍSCAS -->
 
     <div class="faiscas" aria-hidden="true">
         <span>✦</span>
@@ -35,17 +35,11 @@
 
     <header class="cabecalho">
 
-        <div
-            class="armas"
-            aria-hidden="true"
-        >
+        <div class="armas" aria-hidden="true">
             ⚔
         </div>
 
-        <div
-            class="coroa"
-            aria-hidden="true"
-        >
+        <div class="coroa" aria-hidden="true">
             ♛
         </div>
 
@@ -83,10 +77,7 @@
         </p>
 
 
-        <div
-            class="chamas"
-            aria-hidden="true"
-        >
+        <div class="chamas" aria-hidden="true">
             <span>♠</span>
             <span>♠</span>
             <span>♠</span>
@@ -99,35 +90,23 @@
 
     <main>
 
-        <!-- PAINEL DE FILTROS -->
+        <!-- PAINEL -->
 
         <section class="painel">
 
-            <div
-                class="canto superior-esquerdo"
-                aria-hidden="true"
-            >
+            <div class="canto superior-esquerdo">
                 ◆
             </div>
 
-            <div
-                class="canto superior-direito"
-                aria-hidden="true"
-            >
+            <div class="canto superior-direito">
                 ◆
             </div>
 
-            <div
-                class="canto inferior-esquerdo"
-                aria-hidden="true"
-            >
+            <div class="canto inferior-esquerdo">
                 ◆
             </div>
 
-            <div
-                class="canto inferior-direito"
-                aria-hidden="true"
-            >
+            <div class="canto inferior-direito">
                 ◆
             </div>
 
@@ -175,7 +154,7 @@
                         placeholder="Qual história ousa procurar?"
                     >
 
-                    <span aria-hidden="true">
+                    <span>
                         ◆
                     </span>
 
@@ -285,26 +264,242 @@
             </div>
 
 
-            <button
-                type="button"
-                id="limpar"
-            >
-                <span>✦</span>
+            <!-- BOTÕES DO PAINEL -->
 
-                QUEBRAR ENCANTAMENTOS
+            <div class="botoes-painel">
 
-                <span>✦</span>
-            </button>
+                <button
+                    type="button"
+                    id="adicionar"
+                >
+                    <span>🔥</span>
+
+                    ADICIONAR NOVO TOMO
+                </button>
+
+
+                <button
+                    type="button"
+                    id="limpar"
+                >
+                    <span>✦</span>
+
+                    QUEBRAR ENCANTAMENTOS
+
+                    <span>✦</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMULÁRIO -->
+
+        <section
+            id="area-formulario"
+            class="area-formulario escondido"
+        >
+
+            <div class="pergaminho-formulario">
+
+                <div class="simbolo-formulario">
+                    ♛
+                </div>
+
+
+                <p class="formulario-legenda">
+                    ✦ DECRETO DOS ARQUIVOS ✦
+                </p>
+
+
+                <h2 id="titulo-formulario">
+                    Registrar Novo Tomo
+                </h2>
+
+
+                <p class="descricao-formulario">
+                    Registre uma nova história nos arquivos da Coroa.
+                </p>
+
+
+                <form id="formulario-livro">
+
+                    <input
+                        type="hidden"
+                        id="livro-id"
+                    >
+
+
+                    <div class="campo-formulario">
+
+                        <label for="titulo-livro">
+                            ⚔ Título do tomo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="titulo-livro"
+                            placeholder="Digite o título"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-formulario">
+
+                        <label for="autor-livro">
+                            ♛ Autor
+                        </label>
+
+                        <input
+                            type="text"
+                            id="autor-livro"
+                            placeholder="Digite o autor"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campos-formulario-linha">
+
+                        <div class="campo-formulario">
+
+                            <label for="genero-livro">
+                                ◆ Reino literário
+                            </label>
+
+                            <select
+                                id="genero-livro"
+                                required
+                            >
+
+                                <option value="fantasia">
+                                    Fantasia
+                                </option>
+
+                                <option value="romance">
+                                    Romance
+                                </option>
+
+                                <option value="suspense">
+                                    Suspense
+                                </option>
+
+                                <option value="ficcao">
+                                    Ficção
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="status-livro">
+                                ⚔ Jornada
+                            </label>
+
+                            <select
+                                id="status-livro"
+                                required
+                            >
+
+                                <option value="quero-ler">
+                                    Convocado para leitura
+                                </option>
+
+                                <option value="lendo">
+                                    Em batalha
+                                </option>
+
+                                <option value="lido">
+                                    Missão cumprida
+                                </option>
+
+                                <option value="abandonado">
+                                    Banido do reino
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="campo-formulario">
+
+                            <label for="nota-livro">
+                                ★ Julgamento da Coroa
+                            </label>
+
+                            <select
+                                id="nota-livro"
+                                required
+                            >
+
+                                <option value="0">
+                                    Sem avaliação
+                                </option>
+
+                                <option value="1">
+                                    ★
+                                </option>
+
+                                <option value="2">
+                                    ★★
+                                </option>
+
+                                <option value="3">
+                                    ★★★
+                                </option>
+
+                                <option value="4">
+                                    ★★★★
+                                </option>
+
+                                <option value="5">
+                                    ★★★★★
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="botoes-formulario">
+
+                        <button
+                            type="submit"
+                            id="salvar-livro"
+                        >
+                            ♛ SELAR REGISTRO
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="cancelar"
+                        >
+                            ✕ CANCELAR
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
 
         </section>
 
 
         <!-- DIVISÓRIA -->
 
-        <div
-            class="divisoria-fogo"
-            aria-hidden="true"
-        >
+        <div class="divisoria-fogo">
 
             <span></span>
 
