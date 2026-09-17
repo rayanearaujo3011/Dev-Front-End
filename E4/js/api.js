@@ -1,30 +1,21 @@
 export async function carregarTarefas() {
 
-    const resposta =
-        await fetch("./dados.json");
-
+    const resposta = await fetch("./dados.json");
 
     if (!resposta.ok) {
 
-        const erro =
-            new Error(
-                "Erro HTTP " +
-                resposta.status
-            );
+        const erro = new Error(
+            "Erro HTTP " + resposta.status
+        );
 
-        erro.name =
-            "ProtocolError";
+        erro.name = "ProtocolError";
 
-        erro.status =
-            resposta.status;
+        erro.status = resposta.status;
 
         throw erro;
     }
 
-
-    const dados =
-        await resposta.json();
-
+    const dados = await resposta.json();
 
     if (
         typeof dados !== "object" ||
@@ -32,17 +23,14 @@ export async function carregarTarefas() {
         !Array.isArray(dados.tarefas)
     ) {
 
-        const erro =
-            new Error(
-                "Formato de dados inválido"
-            );
+        const erro = new Error(
+            "Formato de dados inválido"
+        );
 
-        erro.name =
-            "FormatError";
+        erro.name = "FormatError";
 
         throw erro;
     }
-
 
     return dados.tarefas;
 }

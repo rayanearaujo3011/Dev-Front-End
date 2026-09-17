@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gerenciador de Tarefas Acadêmicas</title>
+
     <link rel="stylesheet" href="./styles.css">
 </head>
 
@@ -31,7 +33,6 @@
             </div>
 
             <fieldset>
-
                 <legend>Filtrar por status:</legend>
 
                 <div>
@@ -84,11 +85,9 @@
 
                     <label for="status-concluida">Concluída</label>
                 </div>
-
             </fieldset>
 
             <fieldset>
-
                 <legend>Filtrar por prioridade:</legend>
 
                 <div>
@@ -135,46 +134,33 @@
             </fieldset>
 
             <div class="ordenacao">
-
-                <label for="ordenacao">
-                    Ordenar por prazo:
-                </label>
+                <label for="ordenacao">Ordenar por prazo:</label>
 
                 <select id="ordenacao">
-                    <option value="padrao">
-                        Ordem original
-                    </option>
-
-                    <option value="crescente">
-                        Prazo mais próximo
-                    </option>
-
-                    <option value="decrescente">
-                        Prazo mais distante
-                    </option>
+                    <option value="padrao">Ordem original</option>
+                    <option value="crescente">Prazo mais próximo</option>
+                    <option value="decrescente">Prazo mais distante</option>
                 </select>
-
             </div>
 
-            <button
-                type="button"
-                id="limpar-filtros">
+            <button type="button" id="limpar-filtros">
                 Limpar filtros
             </button>
 
         </section>
 
+
+        <!-- Já existe no HTML antes de o JavaScript executar -->
         <div
             id="status-interface"
             role="status"
             aria-live="polite">
         </div>
 
+
         <section class="quadro-tarefas">
 
-            <section
-                class="coluna"
-                data-status="fazer">
+            <section class="coluna" data-status="fazer">
 
                 <h2>A fazer</h2>
 
@@ -182,9 +168,8 @@
 
             </section>
 
-            <section
-                class="coluna"
-                data-status="andamento">
+
+            <section class="coluna" data-status="andamento">
 
                 <h2>Em andamento</h2>
 
@@ -192,9 +177,8 @@
 
             </section>
 
-            <section
-                class="coluna"
-                data-status="revisao">
+
+            <section class="coluna" data-status="revisao">
 
                 <h2>Em revisão</h2>
 
@@ -202,9 +186,8 @@
 
             </section>
 
-            <section
-                class="coluna"
-                data-status="concluida">
+
+            <section class="coluna" data-status="concluida">
 
                 <h2>Concluída</h2>
 
@@ -216,14 +199,13 @@
 
     </main>
 
+
     <footer>
         <p>Rayane Araújo — Desenvolvimento Frontend 2026.2</p>
     </footer>
 
-    <script
-        type="module"
-        src="./js/main.js">
-    </script>
+
+    <script type="module" src="./js/main.js"></script>
 
 </body>
 

@@ -1,271 +1,392 @@
 :root {
     --papel: #fffdf7;
-    --superficie: #ffffff;
-
     --texto: #2f2a24;
     --texto-suave: #5f574e;
-
     --borda: #8b8176;
 
+    /* Cores dos post-its */
     --fazer: #ffe58f;
     --andamento: #bfe1f4;
     --revisao: #d9ccf0;
     --concluida: #cce4bf;
 
-    --destaque: #f7c95c;
     --foco: #1f5aa6;
-
-    --erro: #f7c7c7;
-    --sucesso: #d9efcf;
-    --vazio: #eee7d9;
 
     --espaco-p: 0.5rem;
     --espaco-m: 1rem;
     --espaco-g: 1.5rem;
 
-    --raio: 0.5rem;
+    --raio: 0.45rem;
 
     --sombra:
-        0 0.35rem 0.9rem rgba(47, 42, 36, 0.16);
+        0 0.35rem 0.9rem
+        rgba(47, 42, 36, 0.16);
 }
 
 
-/* =========================
+/* ========================================
    CONFIGURAÇÕES GERAIS
-========================= */
+======================================== */
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
+
+    color: var(--texto);
 
     font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-    color: var(--texto);
-
-    background-color: var(--papel);
-
-    background-image:
-        linear-gradient(
-            #d8e6f3 1px,
-            transparent 1px
-        );
-
-    background-size:
-        100% 2rem;
-
     line-height: 1.5;
+
+    background-color:
+        var(--papel);
+
+    /* Folha de caderno */
+    background-image:
+
+        /* Linha vermelha lateral */
+        linear-gradient(
+            to right,
+            transparent 0,
+            transparent 3rem,
+            rgba(200, 85, 85, 0.22) 3rem,
+            rgba(200, 85, 85, 0.22) 3.06rem,
+            transparent 3.06rem
+        ),
+
+        /* Linhas azuis */
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 1.95rem,
+            rgba(85, 125, 165, 0.12) 2rem
+        );
 }
 
 
-/* =========================
+/* ========================================
+   LARGURA DA PÁGINA
+======================================== */
+
+header,
+main,
+footer {
+    width:
+        min(100% - 2rem, 90rem);
+
+    margin-inline: auto;
+}
+
+
+/* ========================================
    CABEÇALHO
-========================= */
+======================================== */
 
 header {
-    padding: 2rem 1rem;
-
-    text-align: center;
-
-    background-color:
-        rgba(255, 253, 247, 0.95);
-
-    border-bottom:
-        2px solid var(--borda);
+    padding:
+        2rem 0 1.5rem;
 }
 
-header h1 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
 
 header p {
+    margin:
+        0.6rem 0 0;
+
+    color:
+        var(--texto-suave);
+}
+
+
+h1 {
+    position: relative;
+
+    width: fit-content;
+
+    max-width: 100%;
+
     margin: 0;
 
-    color: var(--texto-suave);
+    font-size:
+        clamp(1.7rem, 4vw, 2.8rem);
+
+    line-height: 1.15;
 }
 
 
-/* =========================
-   CONTEÚDO
-========================= */
+/* Marca-texto azul atrás do título */
+
+h1::after {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    left: -0.15rem;
+    right: -0.15rem;
+    bottom: 0.05rem;
+
+    height: 0.55rem;
+
+    background:
+        var(--andamento);
+
+    transform:
+        rotate(-1deg);
+}
+
+
+h2 {
+    margin-top: 0;
+
+    font-size: 1.2rem;
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
 
 main {
-    width: min(95%, 90rem);
+    display: flex;
 
-    margin: 0 auto;
+    flex-direction: column;
 
-    padding:
-        var(--espaco-g)
-        var(--espaco-m);
+    gap:
+        var(--espaco-g);
+
+    min-width: 0;
 }
 
 
-/* =========================
-   CONTROLES
-========================= */
+/* ========================================
+   ÁREA DE BUSCA E FILTROS
+======================================== */
 
 .controles {
-    padding: var(--espaco-g);
+    position: relative;
 
-    margin-bottom: var(--espaco-g);
+    min-width: 0;
 
-    background-color:
-        rgba(255, 255, 255, 0.95);
+    padding:
+        var(--espaco-g);
 
     border:
-        1px solid var(--borda);
+        0.1rem solid
+        var(--borda);
 
     border-radius:
         var(--raio);
+
+    background:
+        rgba(255, 253, 247, 0.96);
 
     box-shadow:
         var(--sombra);
 }
 
-.controles h2 {
-    margin-top: 0;
+
+/* Fita lilás no topo */
+
+.controles::before {
+    content: "";
+
+    position: absolute;
+
+    top: -0.5rem;
+    left: 50%;
+
+    width: 4.5rem;
+    height: 1rem;
+
+    background:
+        rgba(217, 204, 240, 0.9);
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
 }
 
 
-/* =========================
-   BUSCA
-========================= */
+.controles h2 {
+    margin-bottom:
+        var(--espaco-m);
+}
+
+
+/* ========================================
+   CAMPO DE BUSCA
+======================================== */
 
 .campo-busca {
-    margin-bottom:
-        var(--espaco-m);
-}
+    display: flex;
 
-.campo-busca label {
-    display: block;
+    flex-direction: column;
 
-    margin-bottom:
+    gap:
         var(--espaco-p);
 
-    font-weight: bold;
-}
-
-.campo-busca input {
-    width: 100%;
-
-    padding: 0.75rem;
-
-    font: inherit;
-
-    color: var(--texto);
-
-    background-color:
-        var(--superficie);
-
-    border:
-        1px solid var(--borda);
-
-    border-radius:
-        var(--raio);
-}
-
-
-/* =========================
-   FIELDSETS
-========================= */
-
-fieldset {
     margin-bottom:
         var(--espaco-m);
+}
+
+
+label,
+legend {
+    font-weight: 700;
+}
+
+
+input[type="search"] {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 2.7rem;
+
+    padding:
+        0.65rem 0.75rem;
+
+    border:
+        0.1rem solid
+        var(--borda);
+
+    border-radius:
+        var(--raio);
+
+    background:
+        #ffffff;
+
+    color:
+        var(--texto);
+
+    font: inherit;
+}
+
+
+/* ========================================
+   FILTROS
+======================================== */
+
+fieldset {
+    min-width: 0;
+
+    margin:
+        0 0 var(--espaco-m);
 
     padding:
         var(--espaco-m);
 
     border:
-        1px solid var(--borda);
+        0.1rem dashed
+        var(--borda);
 
     border-radius:
         var(--raio);
 }
 
-legend {
-    padding:
-        0 var(--espaco-p);
 
-    font-weight: bold;
+/* Status com leve tom amarelo */
+
+fieldset:first-of-type {
+    background:
+        rgba(255, 229, 143, 0.20);
 }
 
-fieldset div {
-    display: inline-flex;
+
+/* Prioridade com leve tom lilás */
+
+fieldset:nth-of-type(2) {
+    background:
+        rgba(217, 204, 240, 0.20);
+}
+
+
+fieldset > div {
+    display: flex;
 
     align-items: center;
 
-    gap: 0.3rem;
-
-    margin:
-        0.3rem 0.8rem
-        0.3rem 0;
+    gap:
+        var(--espaco-p);
 }
 
 
-/* =========================
+fieldset > div + div {
+    margin-top:
+        0.35rem;
+}
+
+
+input[type="radio"] {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    accent-color:
+        var(--foco);
+}
+
+
+/* ========================================
    ORDENAÇÃO
-========================= */
+======================================== */
 
 .ordenacao {
-    margin-bottom:
-        var(--espaco-m);
-}
+    display: flex;
 
-.ordenacao label {
-    display: block;
+    flex-direction: column;
 
-    margin-bottom:
+    gap:
         var(--espaco-p);
 
-    font-weight: bold;
+    margin-bottom:
+        var(--espaco-m);
+
+    padding:
+        var(--espaco-m);
+
+    background:
+        rgba(191, 225, 244, 0.25);
+
+    border:
+        0.1rem dashed
+        var(--borda);
+
+    border-radius:
+        var(--raio);
 }
+
 
 .ordenacao select {
     width: 100%;
 
-    padding: 0.75rem;
+    min-width: 0;
 
-    font: inherit;
+    min-height: 2.7rem;
 
-    color: var(--texto);
-
-    background-color:
-        var(--superficie);
-
-    border:
-        1px solid var(--borda);
-
-    border-radius:
-        var(--raio);
-}
-
-
-/* =========================
-   BOTÃO LIMPAR
-========================= */
-
-#limpar-filtros {
     padding:
-        0.75rem 1rem;
+        0.65rem 0.75rem;
+
+    color:
+        var(--texto);
 
     font: inherit;
 
-    font-weight: bold;
-
-    color: var(--texto);
-
-    background-color:
-        var(--destaque);
+    background:
+        #ffffff;
 
     border:
-        1px solid var(--borda);
+        0.1rem solid
+        var(--borda);
 
     border-radius:
         var(--raio);
@@ -273,86 +394,151 @@ fieldset div {
     cursor: pointer;
 }
 
+
+/* ========================================
+   BOTÃO LIMPAR FILTROS
+======================================== */
+
+#limpar-filtros {
+    padding:
+        0.7rem 1.1rem;
+
+    color:
+        var(--texto);
+
+    font: inherit;
+
+    font-weight: 700;
+
+    background:
+        var(--concluida);
+
+    border:
+        0.1rem solid
+        var(--borda);
+
+    border-radius:
+        var(--raio);
+
+    box-shadow:
+        0 0.2rem 0.4rem
+        rgba(47, 42, 36, 0.15);
+
+    cursor: pointer;
+
+    transform:
+        rotate(-0.4deg);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
 #limpar-filtros:hover {
     transform:
-        translateY(-1px);
+        translateY(-0.1rem)
+        rotate(0deg);
+
+    box-shadow:
+        0 0.35rem 0.6rem
+        rgba(47, 42, 36, 0.2);
 }
 
 
-/* =========================
-   FOCO
-========================= */
-
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-    outline:
-        3px solid var(--foco);
-
-    outline-offset:
-        3px;
-}
-
-
-/* =========================
-   MENSAGEM / CONTAGEM
-========================= */
+/* ========================================
+   CONTADOR / MENSAGENS
+======================================== */
 
 #status-interface {
-    min-height: 3rem;
+    position: relative;
 
-    margin-bottom:
-        var(--espaco-g);
+    min-height: 3rem;
 
     padding:
         0.8rem 1rem;
 
-    font-weight: bold;
+    color:
+        var(--texto);
 
-    background-color:
-        rgba(255, 255, 255, 0.92);
+    font-weight: 700;
 
-    border-left:
-        0.35rem solid var(--destaque);
+    background:
+        var(--andamento);
+
+    border:
+        0.1rem solid
+        var(--borda);
 
     border-radius:
         var(--raio);
+
+    box-shadow:
+        var(--sombra);
+
+    transform:
+        rotate(0.15deg);
 }
 
 
-/* =========================
-   QUADRO
-========================= */
+/* Fita lilás no contador */
+
+#status-interface::before {
+    content: "";
+
+    position: absolute;
+
+    top: -0.35rem;
+    left: 1.5rem;
+
+    width: 2.8rem;
+    height: 0.65rem;
+
+    background:
+        rgba(217, 204, 240, 0.9);
+
+    transform:
+        rotate(-2deg);
+}
+
+
+/* ========================================
+   QUADRO DE TAREFAS
+======================================== */
 
 .quadro-tarefas {
     display: grid;
 
     grid-template-columns:
-        1fr;
+        minmax(0, 1fr);
 
     gap:
         var(--espaco-g);
-}
 
-
-/* =========================
-   COLUNAS
-========================= */
-
-.coluna {
     min-width: 0;
 }
 
-.coluna h2 {
-    margin-top: 0;
+
+/* ========================================
+   COLUNAS
+======================================== */
+
+.coluna {
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        var(--espaco-m);
+
+    min-width: 0;
 
     padding:
-        0.7rem;
-
-    text-align: center;
+        var(--espaco-m);
 
     border:
-        1px solid var(--borda);
+        0.1rem solid
+        var(--borda);
 
     border-radius:
         var(--raio);
@@ -361,170 +547,366 @@ select:focus-visible {
         var(--sombra);
 }
 
-.coluna[data-status="fazer"] h2 {
-    background-color:
+
+/* A fazer - amarelo */
+
+.coluna[data-status="fazer"] {
+    background:
         var(--fazer);
 }
 
-.coluna[data-status="andamento"] h2 {
-    background-color:
+
+/* Em andamento - azul */
+
+.coluna[data-status="andamento"] {
+    background:
         var(--andamento);
 }
 
-.coluna[data-status="revisao"] h2 {
-    background-color:
+
+/* Em revisão - lilás */
+
+.coluna[data-status="revisao"] {
+    background:
         var(--revisao);
 }
 
-.coluna[data-status="concluida"] h2 {
-    background-color:
+
+/* Concluída - verde */
+
+.coluna[data-status="concluida"] {
+    background:
         var(--concluida);
 }
 
 
-/* =========================
-   LISTAS
-========================= */
+.coluna h2 {
+    margin: 0;
 
-.coluna ul {
-    padding: 0;
+    color:
+        var(--texto);
+}
+
+
+/* ========================================
+   LISTA DE TAREFAS
+======================================== */
+
+ul {
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        var(--espaco-m);
+
+    min-width: 0;
 
     margin: 0;
+
+    padding: 0;
 
     list-style: none;
 }
 
 
-/* =========================
-   CARTÕES
-========================= */
-
-.coluna li {
-    margin-bottom:
-        var(--espaco-m);
+li {
+    min-width: 0;
 }
 
-.coluna article {
+
+/* ========================================
+   CARTÕES / POST-ITS
+======================================== */
+
+article {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        var(--espaco-p);
+
+    min-width: 0;
+
+    min-height:
+        10.5rem;
+
     padding:
+        1.1rem
+        var(--espaco-m)
         var(--espaco-m);
 
     border:
-        1px solid rgba(47, 42, 36, 0.25);
+        0.1rem solid
+        rgba(47, 42, 36, 0.28);
 
     border-radius:
-        0.15rem;
+        var(--raio);
+
+    background:
+        var(--papel);
 
     box-shadow:
-        var(--sombra);
+        0 0.25rem 0.55rem
+        rgba(47, 42, 36, 0.16);
+
+    transform:
+        rotate(-0.25deg);
 
     transition:
-        transform 0.2s ease;
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.coluna article:hover {
+
+/* Alterna a inclinação */
+
+li:nth-child(even) article {
     transform:
-        translateY(-2px);
+        rotate(0.25deg);
 }
 
-.coluna[data-status="fazer"] article {
-    background-color:
-        var(--fazer);
+
+/* Fita no cartão */
+
+article::before {
+    content: "";
+
+    position: absolute;
+
+    top: -0.45rem;
+    left: 50%;
+
+    width: 3rem;
+    height: 0.8rem;
+
+    background:
+        rgba(232, 215, 165, 0.82);
+
+    transform:
+        translateX(-50%)
+        rotate(-1deg);
 }
 
-.coluna[data-status="andamento"] article {
-    background-color:
-        var(--andamento);
+
+article:hover {
+    transform:
+        translateY(-0.12rem)
+        rotate(0);
+
+    box-shadow:
+        0 0.4rem 0.8rem
+        rgba(47, 42, 36, 0.2);
 }
 
-.coluna[data-status="revisao"] article {
-    background-color:
-        var(--revisao);
-}
 
-.coluna[data-status="concluida"] article {
-    background-color:
-        var(--concluida);
-}
+/* ========================================
+   CONTEÚDO DO CARTÃO
+======================================== */
 
-.coluna article h3 {
-    margin-top: 0;
+article h3 {
+    min-width: 0;
 
-    margin-bottom:
-        var(--espaco-m);
-}
-
-.coluna article p {
     margin:
-        0.35rem 0;
+        0 0
+        var(--espaco-p);
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow:
+        ellipsis;
 }
 
-.prioridade {
-    margin-top:
-        var(--espaco-m) !important;
 
-    font-weight: bold;
-}
-
-
-/* =========================
-   RODAPÉ
-========================= */
-
-footer {
-    margin-top: 2rem;
-
-    padding: 1.5rem;
-
-    text-align: center;
+article p {
+    margin: 0;
 
     color:
         var(--texto-suave);
 
-    background-color:
-        rgba(255, 253, 247, 0.95);
-
-    border-top:
-        1px solid var(--borda);
+    font-size:
+        0.95rem;
 }
 
 
-/* =========================
+/* Prazo */
+
+article p:nth-of-type(3) {
+    margin-top: auto;
+
+    padding-top:
+        var(--espaco-p);
+
+    border-top:
+        0.08rem dashed
+        var(--borda);
+
+    color:
+        var(--texto);
+}
+
+
+/* Prioridade */
+
+article p:nth-of-type(4) {
+    width:
+        fit-content;
+
+    max-width:
+        100%;
+
+    padding:
+        0.15rem 0.45rem;
+
+    border:
+        0.08rem solid
+        var(--borda);
+
+    border-radius:
+        var(--raio);
+
+    color:
+        var(--texto);
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+:focus-visible {
+    outline:
+        0.2rem solid
+        var(--foco);
+
+    outline-offset:
+        0.15rem;
+}
+
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+footer {
+    padding:
+        2rem 0;
+
+    color:
+        var(--texto-suave);
+
+    text-align:
+        center;
+}
+
+
+footer p {
+    margin: 0;
+}
+
+
+/* ========================================
    TABLET
-========================= */
+======================================== */
 
 @media (min-width: 44rem) {
 
+    .controles {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap:
+            var(--espaco-m);
+    }
+
+
+    .controles h2 {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .campo-busca {
+        grid-column:
+            1 / -1;
+
+        margin-bottom: 0;
+    }
+
+
+    fieldset {
+        margin-bottom: 0;
+    }
+
+
+    .ordenacao {
+        grid-column:
+            1 / -1;
+
+        margin-bottom: 0;
+    }
+
+
+    #limpar-filtros {
+        width:
+            fit-content;
+
+        grid-column:
+            1 / -1;
+    }
+
+
     .quadro-tarefas {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
     }
 
 }
 
 
-/* =========================
+/* ========================================
    DESKTOP
-========================= */
+======================================== */
 
 @media (min-width: 76rem) {
 
     .quadro-tarefas {
         grid-template-columns:
-            repeat(4, 1fr);
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
     }
 
 }
 
 
-/* =========================
+/* ========================================
    REDUÇÃO DE MOVIMENTO
-========================= */
+======================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-    * {
-        scroll-behavior: auto;
-        transition: none !important;
+    *,
+    *::before,
+    *::after {
+        transition:
+            none !important;
     }
 
 }
