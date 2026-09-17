@@ -1,6 +1,4 @@
-export function renderizarTarefas(
-    tarefas
-) {
+export function renderizarTarefas(tarefas) {
 
     limparListas();
 
@@ -30,24 +28,18 @@ export function renderizarTarefas(
 
 
             const artigo =
-                document.createElement(
-                    "article"
-                );
+                document.createElement("article");
 
 
             const titulo =
-                document.createElement(
-                    "h3"
-                );
+                document.createElement("h3");
 
             titulo.textContent =
                 tarefa.titulo;
 
 
             const projeto =
-                document.createElement(
-                    "p"
-                );
+                document.createElement("p");
 
             projeto.textContent =
                 "Projeto: " +
@@ -55,9 +47,7 @@ export function renderizarTarefas(
 
 
             const responsavel =
-                document.createElement(
-                    "p"
-                );
+                document.createElement("p");
 
             responsavel.textContent =
                 "Responsável: " +
@@ -65,21 +55,15 @@ export function renderizarTarefas(
 
 
             const prazo =
-                document.createElement(
-                    "p"
-                );
+                document.createElement("p");
 
             prazo.textContent =
                 "Prazo: " +
-                formatarData(
-                    tarefa.prazo
-                );
+                formatarData(tarefa.prazo);
 
 
             const prioridade =
-                document.createElement(
-                    "p"
-                );
+                document.createElement("p");
 
             prioridade.classList.add(
                 "prioridade"
@@ -92,39 +76,23 @@ export function renderizarTarefas(
                 );
 
 
-            artigo.appendChild(
-                titulo
-            );
+            artigo.appendChild(titulo);
 
-            artigo.appendChild(
-                projeto
-            );
+            artigo.appendChild(projeto);
 
-            artigo.appendChild(
-                responsavel
-            );
+            artigo.appendChild(responsavel);
 
-            artigo.appendChild(
-                prazo
-            );
+            artigo.appendChild(prazo);
 
-            artigo.appendChild(
-                prioridade
-            );
+            artigo.appendChild(prioridade);
 
 
-            item.appendChild(
-                artigo
-            );
+            item.appendChild(artigo);
 
-
-            lista.appendChild(
-                item
-            );
+            lista.appendChild(item);
 
         }
     );
-
 }
 
 
@@ -143,28 +111,22 @@ function limparListas() {
 
         }
     );
-
 }
 
 
-function formatarPrioridade(
-    prioridade
-) {
+function formatarPrioridade(prioridade) {
 
     if (prioridade === "alta") {
         return "Alta";
     }
 
-
     if (prioridade === "media") {
         return "Média";
     }
 
-
     if (prioridade === "baixa") {
         return "Baixa";
     }
-
 
     return prioridade;
 }
@@ -181,11 +143,9 @@ function formatarData(data) {
     }
 
 
-    return (
-        partes[2] +
+    return partes[2] +
         "/" +
         partes[1] +
         "/" +
-        partes[0]
-    );
+        partes[0];
 }
