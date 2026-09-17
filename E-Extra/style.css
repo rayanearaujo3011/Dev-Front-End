@@ -1451,3 +1451,700 @@ footer small {
         transition: none !important;
     }
 }
+
+/* ==================================================
+   CRUD - CRÔNICAS DE LEITURA
+================================================== */
+
+
+/* ==================================================
+   BOTÕES DO PAINEL
+================================================== */
+
+.botoes-painel {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 1rem;
+
+    margin-top: 1.7rem;
+}
+
+
+#adicionar {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.6rem;
+
+    padding: 0.9rem 1.4rem;
+
+    color: #fff2cf;
+
+    font:
+        inherit;
+
+    font-size: 0.78rem;
+
+    font-weight: bold;
+
+    letter-spacing: 0.12rem;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d64d1d,
+            #7e2018
+        );
+
+    border:
+        0.1rem solid
+        #ff9a2f;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0.6rem
+        rgba(255, 122, 31, 0.35),
+
+        0 0 1.4rem
+        rgba(255, 122, 31, 0.18),
+
+        inset 0 0 1rem
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        0.2s ease;
+}
+
+
+#adicionar:hover {
+    transform:
+        translateY(-0.15rem);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f06624,
+            #94261b
+        );
+
+    box-shadow:
+        0 0 0.8rem
+        rgba(255, 122, 31, 0.55),
+
+        0 0 2rem
+        rgba(255, 122, 31, 0.30);
+}
+
+
+/* Corrige margem antiga */
+
+#limpar {
+    margin: 0;
+}
+
+
+/* ==================================================
+   ÁREA DO FORMULÁRIO
+================================================== */
+
+.area-formulario {
+    width:
+        min(100%, 60rem);
+
+    margin:
+        3rem auto;
+
+    animation:
+        aparecerFormulario
+        0.35s ease;
+}
+
+
+.escondido {
+    display: none;
+}
+
+
+@keyframes aparecerFormulario {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-1rem);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ==================================================
+   PERGAMINHO
+================================================== */
+
+.pergaminho-formulario {
+    position: relative;
+
+    padding:
+        3.5rem 2rem 2.5rem;
+
+    color:
+        #351c16;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(137, 88, 46, 0.10),
+            transparent 7rem
+        ),
+
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(137, 88, 46, 0.10),
+            transparent 8rem
+        ),
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(100, 70, 40, 0.018) 0,
+            rgba(100, 70, 40, 0.018) 1px,
+            transparent 1px,
+            transparent 9px
+        ),
+
+        linear-gradient(
+            135deg,
+            #f5e8c6,
+            #dbc59a
+        );
+
+    border:
+        0.15rem solid
+        #815927;
+
+    box-shadow:
+
+        inset 0 0 3rem
+        rgba(94, 56, 28, 0.16),
+
+        0 1.5rem 3rem
+        rgba(0, 0, 0, 0.5);
+}
+
+
+/* Moldura */
+
+.pergaminho-formulario::before {
+    content: "";
+
+    position: absolute;
+
+    inset:
+        0.7rem;
+
+    border:
+        0.1rem double
+        rgba(112, 72, 31, 0.55);
+
+    pointer-events:
+        none;
+}
+
+
+/* Ornamento inferior */
+
+.pergaminho-formulario::after {
+    content:
+        "⚔  ◆  ♛  ◆  ⚔";
+
+    position: absolute;
+
+    left: 50%;
+    bottom:
+        0.7rem;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(96, 53, 26, 0.35);
+
+    letter-spacing:
+        0.4rem;
+
+    white-space: nowrap;
+}
+
+
+/* ==================================================
+   SÍMBOLO
+================================================== */
+
+.simbolo-formulario {
+    display: grid;
+
+    place-items: center;
+
+    position: absolute;
+
+    top:
+        -1.6rem;
+
+    left: 50%;
+
+    width:
+        3.2rem;
+
+    height:
+        3.2rem;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        #ffb348;
+
+    background:
+        #4c1415;
+
+    border:
+        0.12rem solid
+        #c18834;
+
+    border-radius:
+        50%;
+
+    box-shadow:
+
+        0 0 0 0.3rem
+        #1c0c0d,
+
+        0 0 1.3rem
+        rgba(255, 122, 31, 0.45);
+}
+
+
+/* ==================================================
+   TÍTULO FORMULÁRIO
+================================================== */
+
+.formulario-legenda {
+    margin:
+        0 0 0.5rem;
+
+    color:
+        #b84d20;
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        bold;
+
+    text-align:
+        center;
+
+    letter-spacing:
+        0.3rem;
+}
+
+
+.pergaminho-formulario h2 {
+    margin:
+        0;
+
+    color:
+        #48151a;
+
+    font-size:
+        clamp(
+            1.8rem,
+            5vw,
+            2.7rem
+        );
+
+    font-weight:
+        normal;
+
+    text-align:
+        center;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.06rem;
+}
+
+
+.descricao-formulario {
+    margin:
+        0.7rem 0 2rem;
+
+    color:
+        #715b47;
+
+    text-align:
+        center;
+
+    font-style:
+        italic;
+}
+
+
+/* ==================================================
+   CAMPOS FORMULÁRIO
+================================================== */
+
+.campo-formulario {
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        0.45rem;
+
+    margin-bottom:
+        1rem;
+}
+
+
+.campo-formulario label {
+    color:
+        #54221b;
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        bold;
+}
+
+
+.campo-formulario input,
+.campo-formulario select {
+    min-height:
+        3rem;
+
+    padding:
+        0.75rem 0.9rem;
+
+    color:
+        #2e2018;
+
+    font:
+        inherit;
+
+    background:
+        rgba(
+            255,
+            248,
+            225,
+            0.68
+        );
+
+    border:
+        0.1rem solid
+        #8d642e;
+
+    outline:
+        none;
+
+    box-shadow:
+        inset 0 0 0.6rem
+        rgba(86, 49, 22, 0.08);
+}
+
+
+.campo-formulario input:focus,
+.campo-formulario select:focus {
+    border-color:
+        #e06425;
+
+    box-shadow:
+
+        0 0 0.4rem
+        rgba(255, 122, 31, 0.35),
+
+        inset 0 0 0.6rem
+        rgba(86, 49, 22, 0.08);
+}
+
+
+/* ==================================================
+   CAMPOS EM LINHA
+================================================== */
+
+.campos-formulario-linha {
+    display: grid;
+
+    grid-template-columns:
+        1fr;
+
+    gap:
+        1rem;
+}
+
+
+/* ==================================================
+   BOTÕES FORMULÁRIO
+================================================== */
+
+.botoes-formulario {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap:
+        1rem;
+
+    margin-top:
+        1.5rem;
+
+    padding-bottom:
+        1rem;
+}
+
+
+#salvar-livro,
+#cancelar {
+    padding:
+        0.8rem 1.3rem;
+
+    font:
+        inherit;
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        0.08rem;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+#salvar-livro {
+    color:
+        #fff1cf;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b53b1e,
+            #641819
+        );
+
+    border:
+        0.1rem solid
+        #e98a32;
+
+    box-shadow:
+        0 0 0.7rem
+        rgba(255, 122, 31, 0.25);
+}
+
+
+#salvar-livro:hover {
+    transform:
+        translateY(-0.15rem);
+
+    background:
+        linear-gradient(
+            135deg,
+            #dd5723,
+            #7b1e19
+        );
+
+    box-shadow:
+        0 0 1rem
+        rgba(255, 122, 31, 0.45);
+}
+
+
+#cancelar {
+    color:
+        #eee0c4;
+
+    background:
+        #241619;
+
+    border:
+        0.1rem solid
+        #78624e;
+}
+
+
+#cancelar:hover {
+    background:
+        #3a2022;
+}
+
+
+/* ==================================================
+   BOTÕES DOS LIVROS
+================================================== */
+
+.acoes-livro {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    gap:
+        0.7rem;
+
+    margin-top:
+        1.5rem;
+
+    padding-top:
+        1rem;
+
+    border-top:
+        0.08rem solid
+        rgba(100, 68, 34, 0.28);
+}
+
+
+.botao-editar,
+.botao-excluir {
+    flex: 1;
+
+    min-height:
+        2.5rem;
+
+    padding:
+        0.55rem 0.7rem;
+
+    font:
+        inherit;
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+
+/* EDITAR */
+
+.botao-editar {
+    color:
+        #38250d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e4c16c,
+            #b88732
+        );
+
+    border:
+        0.08rem solid
+        #79551f;
+}
+
+
+.botao-editar:hover {
+    transform:
+        translateY(-0.1rem);
+
+    background:
+        linear-gradient(
+            135deg,
+            #f0d37f,
+            #c9973a
+        );
+
+    box-shadow:
+        0 0 0.7rem
+        rgba(211, 160, 65, 0.28);
+}
+
+
+/* EXCLUIR */
+
+.botao-excluir {
+    color:
+        #f1d8c9;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6f181b,
+            #351012
+        );
+
+    border:
+        0.08rem solid
+        #9c3a2b;
+}
+
+
+.botao-excluir:hover {
+    transform:
+        translateY(-0.1rem);
+
+    background:
+        linear-gradient(
+            135deg,
+            #92231f,
+            #4a1113
+        );
+
+    box-shadow:
+        0 0 0.7rem
+        rgba(210, 61, 33, 0.28);
+}
+
+
+/* ==================================================
+   RESPONSIVO DO FORMULÁRIO
+================================================== */
+
+@media (min-width: 44rem) {
+
+    .campos-formulario-linha {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+    }
+
+}
