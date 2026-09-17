@@ -3,292 +3,227 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Gerenciador de Tarefas Acadêmicas
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas Acadêmicas</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
     <header>
-        <h1>
-            Gerenciador de Tarefas Acadêmicas
-        </h1>
+        <h1>Gerenciador de Tarefas Acadêmicas</h1>
+        <p>Organize suas atividades, projetos e prazos acadêmicos.</p>
     </header>
-
 
     <main>
 
-        <section
-            class="filtros"
-            aria-labelledby="filtros-titulo"
-        >
+        <section class="controles" aria-labelledby="titulo-filtros">
 
-            <h2 id="filtros-titulo">
-                Busca e Filtros
-            </h2>
+            <h2 id="titulo-filtros">Busca e Filtros</h2>
 
+            <div class="campo-busca">
+                <label for="busca">Buscar por título:</label>
 
-            <form>
+                <input
+                    type="search"
+                    id="busca"
+                    placeholder="Digite o título da tarefa">
+            </div>
 
-                <div class="campo-busca">
+            <fieldset>
 
-                    <label for="busca-tarefa">
-                        Buscar por título:
-                    </label>
+                <legend>Filtrar por status:</legend>
 
+                <div>
                     <input
-                        type="text"
-                        id="busca-tarefa"
-                        name="busca-tarefa"
-                    >
+                        type="radio"
+                        id="status-todos"
+                        name="status"
+                        value="todos"
+                        checked>
 
+                    <label for="status-todos">Todos</label>
                 </div>
 
+                <div>
+                    <input
+                        type="radio"
+                        id="status-fazer"
+                        name="status"
+                        value="fazer">
 
-                <fieldset>
+                    <label for="status-fazer">A fazer</label>
+                </div>
 
-                    <legend>
-                        Filtrar por status:
-                    </legend>
+                <div>
+                    <input
+                        type="radio"
+                        id="status-andamento"
+                        name="status"
+                        value="andamento">
 
+                    <label for="status-andamento">Em andamento</label>
+                </div>
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="status-todos"
-                            name="status"
-                            value="todos"
-                            checked
-                        >
+                <div>
+                    <input
+                        type="radio"
+                        id="status-revisao"
+                        name="status"
+                        value="revisao">
 
-                        <label for="status-todos">
-                            Todos
-                        </label>
-                    </div>
+                    <label for="status-revisao">Em revisão</label>
+                </div>
 
+                <div>
+                    <input
+                        type="radio"
+                        id="status-concluida"
+                        name="status"
+                        value="concluida">
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="status-fazer"
-                            name="status"
-                            value="fazer"
-                        >
+                    <label for="status-concluida">Concluída</label>
+                </div>
 
-                        <label for="status-fazer">
-                            A fazer
-                        </label>
-                    </div>
+            </fieldset>
 
+            <fieldset>
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="status-andamento"
-                            name="status"
-                            value="andamento"
-                        >
+                <legend>Filtrar por prioridade:</legend>
 
-                        <label for="status-andamento">
-                            Em andamento
-                        </label>
-                    </div>
+                <div>
+                    <input
+                        type="radio"
+                        id="prioridade-todas"
+                        name="prioridade"
+                        value="todas"
+                        checked>
 
+                    <label for="prioridade-todas">Todas</label>
+                </div>
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="status-revisao"
-                            name="status"
-                            value="revisao"
-                        >
+                <div>
+                    <input
+                        type="radio"
+                        id="prioridade-baixa"
+                        name="prioridade"
+                        value="baixa">
 
-                        <label for="status-revisao">
-                            Em revisão
-                        </label>
-                    </div>
+                    <label for="prioridade-baixa">Baixa</label>
+                </div>
 
+                <div>
+                    <input
+                        type="radio"
+                        id="prioridade-media"
+                        name="prioridade"
+                        value="media">
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="status-concluida"
-                            name="status"
-                            value="concluida"
-                        >
+                    <label for="prioridade-media">Média</label>
+                </div>
 
-                        <label for="status-concluida">
-                            Concluída
-                        </label>
-                    </div>
+                <div>
+                    <input
+                        type="radio"
+                        id="prioridade-alta"
+                        name="prioridade"
+                        value="alta">
 
-                </fieldset>
+                    <label for="prioridade-alta">Alta</label>
+                </div>
 
+            </fieldset>
 
-                <fieldset>
+            <div class="ordenacao">
 
-                    <legend>
-                        Filtrar por prioridade:
-                    </legend>
+                <label for="ordenacao">
+                    Ordenar por prazo:
+                </label>
 
+                <select id="ordenacao">
+                    <option value="padrao">
+                        Ordem original
+                    </option>
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="prioridade-todas"
-                            name="prioridade"
-                            value="todas"
-                            checked
-                        >
+                    <option value="crescente">
+                        Prazo mais próximo
+                    </option>
 
-                        <label for="prioridade-todas">
-                            Todas
-                        </label>
-                    </div>
+                    <option value="decrescente">
+                        Prazo mais distante
+                    </option>
+                </select>
 
+            </div>
 
-                    <div>
-                        <input
-                            type="radio"
-                            id="prioridade-baixa"
-                            name="prioridade"
-                            value="baixa"
-                        >
-
-                        <label for="prioridade-baixa">
-                            Baixa
-                        </label>
-                    </div>
-
-
-                    <div>
-                        <input
-                            type="radio"
-                            id="prioridade-media"
-                            name="prioridade"
-                            value="media"
-                        >
-
-                        <label for="prioridade-media">
-                            Média
-                        </label>
-                    </div>
-
-
-                    <div>
-                        <input
-                            type="radio"
-                            id="prioridade-alta"
-                            name="prioridade"
-                            value="alta"
-                        >
-
-                        <label for="prioridade-alta">
-                            Alta
-                        </label>
-                    </div>
-
-                </fieldset>
-
-            </form>
+            <button
+                type="button"
+                id="limpar-filtros">
+                Limpar filtros
+            </button>
 
         </section>
-
 
         <div
             id="status-interface"
             role="status"
-            aria-live="polite"
-        ></div>
+            aria-live="polite">
+        </div>
 
+        <section class="quadro-tarefas">
 
-        <section
-            class="coluna"
-            data-status="fazer"
-            aria-labelledby="titulo-fazer"
-        >
+            <section
+                class="coluna"
+                data-status="fazer">
 
-            <h2 id="titulo-fazer">
-                A fazer
-            </h2>
+                <h2>A fazer</h2>
 
-            <ul></ul>
+                <ul></ul>
 
-        </section>
+            </section>
 
+            <section
+                class="coluna"
+                data-status="andamento">
 
-        <section
-            class="coluna"
-            data-status="andamento"
-            aria-labelledby="titulo-andamento"
-        >
+                <h2>Em andamento</h2>
 
-            <h2 id="titulo-andamento">
-                Em andamento
-            </h2>
+                <ul></ul>
 
-            <ul></ul>
+            </section>
 
-        </section>
+            <section
+                class="coluna"
+                data-status="revisao">
 
+                <h2>Em revisão</h2>
 
-        <section
-            class="coluna"
-            data-status="revisao"
-            aria-labelledby="titulo-revisao"
-        >
+                <ul></ul>
 
-            <h2 id="titulo-revisao">
-                Em revisão
-            </h2>
+            </section>
 
-            <ul></ul>
+            <section
+                class="coluna"
+                data-status="concluida">
 
-        </section>
+                <h2>Concluída</h2>
 
+                <ul></ul>
 
-        <section
-            class="coluna"
-            data-status="concluida"
-            aria-labelledby="titulo-concluida"
-        >
-
-            <h2 id="titulo-concluida">
-                Concluída
-            </h2>
-
-            <ul></ul>
+            </section>
 
         </section>
 
     </main>
 
-
     <footer>
-
-        <p>
-            Rayane Araújo — Desenvolvimento Frontend 2026.2
-        </p>
-
+        <p>Rayane Araújo — Desenvolvimento Frontend 2026.2</p>
     </footer>
-
 
     <script
         type="module"
-        src="./js/main.js"
-    ></script>
+        src="./js/main.js">
+    </script>
 
 </body>
 
