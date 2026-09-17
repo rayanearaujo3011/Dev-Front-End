@@ -1,27 +1,46 @@
-# Dev-Front-End
+# Gerenciador de Tarefas Acadêmicas
 
-Projeto de desenvolvimento front-end voltado para a criação de um **gerenciador de tarefas acadêmicas**.
+Projeto desenvolvido para a disciplina de Desenvolvimento Frontend — 2026.2.
 
-🚧 **Status:** Em desenvolvimento
+## Sobre o projeto
 
-## 📌 Sobre o projeto
+O Gerenciador de Tarefas Acadêmicas permite visualizar e organizar tarefas acadêmicas através de busca, filtros e ordenação.
 
-Este projeto está sendo desenvolvido com o objetivo de criar uma aplicação que auxilie na organização e no gerenciamento de tarefas relacionadas à rotina acadêmica.
+As tarefas são carregadas de um arquivo JSON utilizando Fetch API.
 
-A proposta ainda está em construção e novas funcionalidades, melhorias de interface e recursos serão adicionados ao longo do desenvolvimento.
+## Funcionalidades
 
-## 🛠️ Tecnologias
+- Carregamento de tarefas com Fetch
+- Busca de tarefas pelo título
+- Filtro por status
+- Filtro por prioridade
+- Combinação de busca e filtros
+- Ordenação por prazo
+- Botão para limpar os filtros
+- Contagem de tarefas visíveis
+- Tratamento do estado de carregamento
+- Tratamento de erros
+- Tratamento de origem vazia
+- Tratamento de resultado vazio
+- Interface responsiva
+- Feedback acessível com aria-live
 
-As tecnologias utilizadas no projeto serão adicionadas e atualizadas conforme o desenvolvimento avançar.
+## Tecnologias utilizadas
 
-## 📂 Estrutura
+- HTML
+- CSS
+- JavaScript
+- JSON
+- Fetch API
 
-A estrutura do projeto poderá sofrer alterações durante o processo de desenvolvimento, conforme novas funcionalidades forem implementadas.
+## Autora
 
-## 🚀 Desenvolvimento
+Rayane Araújo
 
-O projeto está em fase de desenvolvimento e aprendizado. Novas atualizações serão realizadas gradualmente.
+Desenvolvimento Frontend — 2026.2
 
-## 📄 Licença
+## Aplicação publicada
 
-Este projeto está sendo desenvolvido para fins acadêmicos e de aprendizado.
+GitHub Pages:
+
+COLE_AQUI_O_LINK_DO_GITHUB_PAGES
