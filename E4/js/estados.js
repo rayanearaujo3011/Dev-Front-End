@@ -1,11 +1,6 @@
-import {
-    renderizarTarefas
-} from "./renderizacao.js";
-
-
-export function renderizarEstado(
+export function mostrarMensagem(
     estado,
-    dados
+    quantidadeVisivel
 ) {
 
     const statusInterface =
@@ -14,129 +9,92 @@ export function renderizarEstado(
         );
 
 
-    const colunas =
-        document.querySelectorAll(
-            ".coluna"
-        );
+    // Carregando
 
-
-    statusInterface.dataset.estado =
-        estado;
-
-
-    if (estado === "carregando") {
+    if (estado.carregamento) {
 
         statusInterface.textContent =
             "Carregando tarefas...";
 
-        esconderColunas(colunas);
-
+        return;
     }
 
 
-    else if (estado === "sucesso") {
+    // Erro
 
-        statusInterface.textContent =
-            dados.length +
-            " tarefas carregadas com sucesso.";
+    if (estado.erro !== null) {
 
-        mostrarColunas(colunas);
-
-        renderizarTarefas(dados);
-
-    }
-
-
-    else if (estado === "vazio") {
-
-        statusInterface.textContent =
-            "Nenhuma tarefa acadêmica encontrada.";
-
-        esconderColunas(colunas);
-
-    }
-
-
-    else if (estado === "erro") {
-
-        esconderColunas(colunas);
-
-
-        if (dados.name === "TypeError") {
+        if (estado.erro.name === "TypeError") {
 
             statusInterface.textContent =
                 "Erro de rede. Não foi possível carregar as tarefas.";
-
         }
 
-
         else if (
-            dados.name === "SyntaxError"
+            estado.erro.name === "SyntaxError"
         ) {
 
             statusInterface.textContent =
                 "Erro de formato. O arquivo JSON está inválido.";
-
         }
 
-
         else if (
-            dados.name === "ProtocolError"
+            estado.erro.name === "ProtocolError"
         ) {
 
             statusInterface.textContent =
                 "Erro de protocolo. Código HTTP: " +
-                dados.status +
+                estado.erro.status +
                 ".";
-
         }
 
-
         else if (
-            dados.name === "FormatError"
+            estado.erro.name === "FormatError"
         ) {
 
             statusInterface.textContent =
                 "Erro de formato. A estrutura dos dados é inválida.";
-
         }
-
 
         else {
 
             statusInterface.textContent =
                 "Ocorreu um erro ao carregar as tarefas.";
-
         }
 
+        return;
     }
 
-}
+
+    // Origem vazia
+
+    if (estado.tarefas.length === 0) {
+
+        statusInterface.textContent =
+            "Nenhuma tarefa acadêmica cadastrada.";
+
+        return;
+    }
 
 
-function esconderColunas(colunas) {
+    // Resultado vazio dos filtros
 
-    colunas.forEach(
-        function (coluna) {
+    if (quantidadeVisivel === 0) {
 
-            coluna.style.display =
-                "none";
+        statusInterface.textContent =
+            "0 de " +
+            estado.tarefas.length +
+            " tarefas. Nenhum resultado encontrado. Altere ou limpe os filtros.";
 
-        }
-    );
-
-}
+        return;
+    }
 
 
-function mostrarColunas(colunas) {
+    // Resultado normal
 
-    colunas.forEach(
-        function (coluna) {
-
-            coluna.style.display =
-                "";
-
-        }
-    );
-
+    statusInterface.textContent =
+        quantidadeVisivel +
+        " de " +
+        estado.tarefas.length +
+        " tarefas.";
 }
