@@ -1,0 +1,76 @@
+{
+    "livros": [
+        {
+            "id": 1,
+            "titulo": "Trono de Vidro",
+            "autor": "Sarah J. Maas",
+            "genero": "fantasia",
+            "status": "lido",
+            "nota": 5
+        },
+        {
+            "id": 2,
+            "titulo": "Corte de Espinhos e Rosas",
+            "autor": "Sarah J. Maas",
+            "genero": "fantasia",
+            "status": "lido",
+            "nota": 5
+        },
+        {
+            "id": 3,
+            "titulo": "Quarta Asa",
+            "autor": "Rebecca Yarros",
+            "genero": "fantasia",
+            "status": "lendo",
+            "nota": 4
+        },
+        {
+            "id": 4,
+            "titulo": "O Príncipe Cruel",
+            "autor": "Holly Black",
+            "genero": "fantasia",
+            "status": "quero-ler",
+            "nota": 0
+        },
+        {
+            "id": 5,
+            "titulo": "A Hipótese do Amor",
+            "autor": "Ali Hazelwood",
+            "genero": "romance",
+            "status": "lido",
+            "nota": 4
+        },
+        {
+            "id": 6,
+            "titulo": "Verity",
+            "autor": "Colleen Hoover",
+            "genero": "suspense",
+            "status": "lido",
+            "nota": 4
+        },
+        {
+            "id": 7,
+            "titulo": "Duna",
+            "autor": "Frank Herbert",
+            "genero": "ficcao",
+            "status": "quero-ler",
+            "nota": 0
+        },
+        {
+            "id": 8,
+            "titulo": "A Biblioteca da Meia-Noite",
+            "autor": "Matt Haig",
+            "genero": "ficcao",
+            "status": "abandonado",
+            "nota": 2
+        },
+        {
+            "id": 9,
+            "titulo": "Era Uma Vez um Coração Partido",
+            "autor": "Stephanie Garber",
+            "genero": "fantasia",
+            "status": "quero-ler",
+            "nota": 0
+        }
+    ]
+}
