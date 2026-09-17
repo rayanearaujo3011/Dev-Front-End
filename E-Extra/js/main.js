@@ -23,66 +23,158 @@ import {
 ========================================= */
 
 const campoBusca =
-    document.getElementById(
-        "busca"
-    );
+    document.getElementById("busca");
 
 
 const campoStatus =
-    document.getElementById(
-        "status"
-    );
+    document.getElementById("status");
 
 
 const campoGenero =
-    document.getElementById(
-        "genero"
-    );
+    document.getElementById("genero");
 
 
 const campoOrdenacao =
-    document.getElementById(
-        "ordenacao"
-    );
+    document.getElementById("ordenacao");
 
 
 const botaoLimpar =
-    document.getElementById(
-        "limpar"
-    );
+    document.getElementById("limpar");
+
+
+const botaoAdicionar =
+    document.getElementById("adicionar");
 
 
 const mensagem =
+    document.getElementById("mensagem");
+
+
+const biblioteca =
+    document.getElementById("biblioteca");
+
+
+/* FORMULÁRIO */
+
+const areaFormulario =
     document.getElementById(
-        "mensagem"
+        "area-formulario"
+    );
+
+
+const formulario =
+    document.getElementById(
+        "formulario-livro"
+    );
+
+
+const tituloFormulario =
+    document.getElementById(
+        "titulo-formulario"
+    );
+
+
+const campoId =
+    document.getElementById(
+        "livro-id"
+    );
+
+
+const campoTitulo =
+    document.getElementById(
+        "titulo-livro"
+    );
+
+
+const campoAutor =
+    document.getElementById(
+        "autor-livro"
+    );
+
+
+const campoGeneroLivro =
+    document.getElementById(
+        "genero-livro"
+    );
+
+
+const campoStatusLivro =
+    document.getElementById(
+        "status-livro"
+    );
+
+
+const campoNota =
+    document.getElementById(
+        "nota-livro"
+    );
+
+
+const botaoCancelar =
+    document.getElementById(
+        "cancelar"
     );
 
 
 /* =========================================
-   INICIA A APLICAÇÃO
+   LOCAL STORAGE
+========================================= */
+
+function salvarLocalStorage() {
+
+    localStorage.setItem(
+        "livros",
+        JSON.stringify(
+            estado.livros
+        )
+    );
+
+}
+
+
+/* =========================================
+   INICIA APLICAÇÃO
 ========================================= */
 
 async function iniciarAplicacao() {
 
-    estado.carregamento =
-        true;
+    estado.carregamento = true;
 
-
-    estado.erro =
-        null;
-
+    estado.erro = null;
 
     atualizarTela();
 
 
     try {
 
-        const livros =
-            await carregarLivros();
+        const livrosSalvos =
+            localStorage.getItem(
+                "livros"
+            );
 
 
-        estado.livros =
-            livros;
+        if (livrosSalvos !== null) {
+
+            estado.livros =
+                JSON.parse(
+                    livrosSalvos
+                );
+
+        }
+
+        else {
+
+            const livros =
+                await carregarLivros();
+
+
+            estado.livros =
+                livros;
+
+
+            salvarLocalStorage();
+
+        }
 
 
         estado.carregamento =
@@ -111,12 +203,10 @@ async function iniciarAplicacao() {
 
 
 /* =========================================
-   ATUALIZA A TELA
+   ATUALIZA TELA
 ========================================= */
 
 function atualizarTela() {
-
-    /* CARREGANDO */
 
     if (estado.carregamento) {
 
@@ -132,67 +222,19 @@ function atualizarTela() {
     }
 
 
-    /* ERRO */
-
     if (estado.erro !== null) {
 
         renderizarLivros([]);
 
 
-        if (
-            estado.erro.name ===
-            "TypeError"
-        ) {
-
-            mensagem.textContent =
-                "⚔ Os mensageiros não conseguiram alcançar a biblioteca.";
-
-        }
-
-        else if (
-            estado.erro.name ===
-            "SyntaxError"
-        ) {
-
-            mensagem.textContent =
-                "☠ Um dos pergaminhos possui uma inscrição inválida.";
-
-        }
-
-        else if (
-            estado.erro.name ===
-            "ProtocolError"
-        ) {
-
-            mensagem.textContent =
-                "⚔ Os portões da biblioteca recusaram o acesso.";
-
-        }
-
-        else if (
-            estado.erro.name ===
-            "FormatError"
-        ) {
-
-            mensagem.textContent =
-                "☠ Os registros da biblioteca estão em formato inválido.";
-
-        }
-
-        else {
-
-            mensagem.textContent =
-                "☠ Algo impediu o acesso aos arquivos da Coroa.";
-
-        }
+        mensagem.textContent =
+            "☠ Algo impediu o acesso aos arquivos da Coroa.";
 
 
         return;
 
     }
 
-
-    /* BIBLIOTECA VAZIA */
 
     if (estado.livros.length === 0) {
 
@@ -208,8 +250,6 @@ function atualizarTela() {
     }
 
 
-    /* FILTROS */
-
     const livrosVisiveis =
         obterLivrosVisiveis(
             estado
@@ -221,11 +261,7 @@ function atualizarTela() {
     );
 
 
-    /* NENHUM RESULTADO */
-
-    if (
-        livrosVisiveis.length === 0
-    ) {
+    if (livrosVisiveis.length === 0) {
 
         mensagem.textContent =
             "☾ Nenhum tomo foi encontrado. Altere ou quebre os encantamentos.";
@@ -236,8 +272,6 @@ function atualizarTela() {
     }
 
 
-    /* RESULTADO NORMAL */
-
     mensagem.textContent =
         "✦ " +
         livrosVisiveis.length +
@@ -246,6 +280,329 @@ function atualizarTela() {
         " tomos encontrados nos arquivos da Coroa ✦";
 
 }
+
+
+/* =========================================
+   ABRIR FORMULÁRIO PARA ADICIONAR
+========================================= */
+
+botaoAdicionar.addEventListener(
+    "click",
+    function () {
+
+        formulario.reset();
+
+
+        campoId.value =
+            "";
+
+
+        tituloFormulario.textContent =
+            "Registrar Novo Tomo";
+
+
+        areaFormulario.classList.remove(
+            "escondido"
+        );
+
+
+        campoTitulo.focus();
+
+    }
+);
+
+
+/* =========================================
+   CANCELAR
+========================================= */
+
+botaoCancelar.addEventListener(
+    "click",
+    function () {
+
+        formulario.reset();
+
+
+        campoId.value =
+            "";
+
+
+        areaFormulario.classList.add(
+            "escondido"
+        );
+
+    }
+);
+
+
+/* =========================================
+   SALVAR / ADICIONAR / EDITAR
+========================================= */
+
+formulario.addEventListener(
+    "submit",
+    function (evento) {
+
+        evento.preventDefault();
+
+
+        const id =
+            campoId.value;
+
+
+        /* =================================
+           NOVO LIVRO
+        ================================= */
+
+        if (id === "") {
+
+            const novoLivro = {
+
+                id: Date.now(),
+
+                titulo:
+                    campoTitulo.value,
+
+                autor:
+                    campoAutor.value,
+
+                genero:
+                    campoGeneroLivro.value,
+
+                status:
+                    campoStatusLivro.value,
+
+                nota:
+                    Number(
+                        campoNota.value
+                    )
+
+            };
+
+
+            estado.livros.push(
+                novoLivro
+            );
+
+
+            mensagem.textContent =
+                "🔥 Novo tomo registrado nos arquivos da Coroa!";
+
+        }
+
+
+        /* =================================
+           EDITAR LIVRO
+        ================================= */
+
+        else {
+
+            const livro =
+                estado.livros.find(
+                    function (livro) {
+
+                        return livro.id ===
+                            Number(id);
+
+                    }
+                );
+
+
+            if (livro !== undefined) {
+
+                livro.titulo =
+                    campoTitulo.value;
+
+
+                livro.autor =
+                    campoAutor.value;
+
+
+                livro.genero =
+                    campoGeneroLivro.value;
+
+
+                livro.status =
+                    campoStatusLivro.value;
+
+
+                livro.nota =
+                    Number(
+                        campoNota.value
+                    );
+
+            }
+
+        }
+
+
+        salvarLocalStorage();
+
+
+        formulario.reset();
+
+
+        campoId.value =
+            "";
+
+
+        areaFormulario.classList.add(
+            "escondido"
+        );
+
+
+        atualizarTela();
+
+    }
+);
+
+
+/* =========================================
+   EDITAR E EXCLUIR
+   DELEGAÇÃO DE EVENTOS
+========================================= */
+
+biblioteca.addEventListener(
+    "click",
+    function (evento) {
+
+        const elemento =
+            evento.target;
+
+
+        /* =================================
+           EDITAR
+        ================================= */
+
+        if (
+            elemento.classList.contains(
+                "botao-editar"
+            )
+        ) {
+
+            const id =
+                Number(
+                    elemento.dataset.id
+                );
+
+
+            const livro =
+                estado.livros.find(
+                    function (livro) {
+
+                        return livro.id === id;
+
+                    }
+                );
+
+
+            if (livro === undefined) {
+                return;
+            }
+
+
+            campoId.value =
+                livro.id;
+
+
+            campoTitulo.value =
+                livro.titulo;
+
+
+            campoAutor.value =
+                livro.autor;
+
+
+            campoGeneroLivro.value =
+                livro.genero;
+
+
+            campoStatusLivro.value =
+                livro.status;
+
+
+            campoNota.value =
+                livro.nota;
+
+
+            tituloFormulario.textContent =
+                "Editar Registro do Tomo";
+
+
+            areaFormulario.classList.remove(
+                "escondido"
+            );
+
+
+            areaFormulario.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        /* =================================
+           EXCLUIR
+        ================================= */
+
+        if (
+            elemento.classList.contains(
+                "botao-excluir"
+            )
+        ) {
+
+            const id =
+                Number(
+                    elemento.dataset.id
+                );
+
+
+            const livro =
+                estado.livros.find(
+                    function (livro) {
+
+                        return livro.id === id;
+
+                    }
+                );
+
+
+            if (livro === undefined) {
+                return;
+            }
+
+
+            const confirmar =
+                confirm(
+                    'Deseja realmente banir "' +
+                    livro.titulo +
+                    '" dos arquivos da Coroa?'
+                );
+
+
+            if (confirmar) {
+
+                estado.livros =
+                    estado.livros.filter(
+                        function (livro) {
+
+                            return livro.id !== id;
+
+                        }
+                    );
+
+
+                salvarLocalStorage();
+
+
+                atualizarTela();
+
+            }
+
+        }
+
+    }
+);
 
 
 /* =========================================
@@ -328,30 +685,33 @@ botaoLimpar.addEventListener(
     "click",
     function () {
 
-        /* LIMPA O ESTADO */
+        estado.busca =
+            "";
 
-        estado.busca = "";
 
         estado.status =
             "todos";
 
+
         estado.genero =
             "todos";
+
 
         estado.ordenacao =
             "padrao";
 
 
-        /* LIMPA OS CONTROLES */
-
         campoBusca.value =
             "";
+
 
         campoStatus.value =
             "todos";
 
+
         campoGenero.value =
             "todos";
+
 
         campoOrdenacao.value =
             "padrao";
