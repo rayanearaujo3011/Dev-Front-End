@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Crônicas de Leitura</title>
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+</head>
+
+<body>
+
+    <header class="cabecalho">
+
+        <p class="simbolo">✦ ☾ ✦</p>
+
+        <h1>Crônicas de Leitura</h1>
+
+        <p class="subtitulo">
+            Toda história deixa um pouco de magia para trás.
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- PAINEL DE CONTROLE -->
+
+        <section class="painel">
+
+            <div class="titulo-painel">
+                <span>✦</span>
+                <h2>Explore sua biblioteca</h2>
+                <span>✦</span>
+            </div>
+
+
+            <div class="campo">
+
+                <label for="busca">
+                    Buscar nos arquivos
+                </label>
+
+                <input
+                    type="search"
+                    id="busca"
+                    placeholder="Digite o título de um livro..."
+                >
+
+            </div>
+
+
+            <div class="grupo-filtros">
+
+                <div class="campo">
+
+                    <label for="status">
+                        Jornada
+                    </label>
+
+                    <select id="status">
+
+                        <option value="todos">
+                            Todos os livros
+                        </option>
+
+                        <option value="quero-ler">
+                            Quero ler
+                        </option>
+
+                        <option value="lendo">
+                            Lendo
+                        </option>
+
+                        <option value="lido">
+                            Lidos
+                        </option>
+
+                        <option value="abandonado">
+                            Abandonados
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="genero">
+                        Reino literário
+                    </label>
+
+                    <select id="genero">
+
+                        <option value="todos">
+                            Todos os gêneros
+                        </option>
+
+                        <option value="fantasia">
+                            Fantasia
+                        </option>
+
+                        <option value="romance">
+                            Romance
+                        </option>
+
+                        <option value="suspense">
+                            Suspense
+                        </option>
+
+                        <option value="ficcao">
+                            Ficção
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="ordenacao">
+                        Organizar grimório
+                    </label>
+
+                    <select id="ordenacao">
+
+                        <option value="padrao">
+                            Ordem original
+                        </option>
+
+                        <option value="melhor-nota">
+                            Melhor avaliação
+                        </option>
+
+                        <option value="menor-nota">
+                            Menor avaliação
+                        </option>
+
+                        <option value="titulo">
+                            Ordem alfabética
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="limpar"
+            >
+                ✦ Limpar encantamentos
+            </button>
+
+        </section>
+
+
+        <!-- CONTADOR -->
+
+        <div
+            id="mensagem"
+            role="status"
+            aria-live="polite"
+        >
+            Abrindo os portões da biblioteca...
+        </div>
+
+
+        <!-- LIVROS -->
+
+        <section
+            id="biblioteca"
+            class="biblioteca"
+            aria-label="Livros da biblioteca"
+        >
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p class="ornamento">
+            ☾ ───────── ✦ ───────── ☽
+        </p>
+
+        <p>
+            Crônicas de Leitura
+        </p>
+
+        <p>
+            Desenvolvido por Rayane Araújo
+        </p>
+
+    </footer>
+
+
+    <script
+        type="module"
+        src="./js/main.js"
+    ></script>
+
+</body>
+
+</html>
